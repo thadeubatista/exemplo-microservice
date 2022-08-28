@@ -1,0 +1,5 @@
+logging:
+  ambiente: dev
+redis:
+  url: http://localhost
+  port: 6987
