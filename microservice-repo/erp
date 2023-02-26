@@ -1,0 +1,48 @@
+spring:
+  #redis:
+  #  host: 172.19.0.3
+  #  port: 6379
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fenix?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.hibernate.type.descriptor.sql: trace
+management:
+  endpoints:
+    enabled-by-default: false #desabilita todos os endpoints para habilitar somente o que for ser utilizado
+    web:
+      exposure:
+        include: "health,metrics,info,prometheus,refresh"
+    jmx:
+      exposure:
+        include: "metrics"
+  metrics:
+    enable:
+      executor: false
+  endpoint: #como todos os endpoinsts est�o desabilitados, devemos habilitar um por um
+    health:
+      enabled: true
+      show-details: always
+    refresh:
+      enabled: true
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    info:
+      enabled: true
